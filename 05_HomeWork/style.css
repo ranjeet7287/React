@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+}
+#header{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    height: 15vh;
+    width: 100%;
+    z-index: 999;
+
+}
+#logo-location{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+#logo > img{
+    width: 5rem;
+    border-radius: 25px;
+}
+#location > input{
+    padding: 1rem 2rem;
+    background-color: rgb(213, 213, 213);
+    border: none;
+    border-radius: 20px;
+}
+#HeaderList > ul{
+    list-style-type: none;
+    display: flex;
+    gap: 2.4rem;
+    font-size: 1.5rem;
+}
+#main{
+    padding-top: 7rem;
+}
