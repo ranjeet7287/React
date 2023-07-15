@@ -36,13 +36,25 @@ const Header=()=>{
     );
 }
 
+const Vegbaryani=()=>{
+    return(
+        <div id="card">
+            <img alt="food-img" id="foodimg" src="https://pbs.twimg.com/media/Evc4yU2WYAEILPD.jpg"/>
+            <h3>Veg Baryani</h3>
+            <p>delicious medley of succulent vegetables, spices, ghee, saffron and flavourful basmati rice.</p>
+            <span>⭐5.0</span>
+            <span>19 min</span>
+            <span>💲5</span>
+        </div>
+    );
+}
 
 
 
 const Body=()=>{
     return(
         <div id="main">
-            <h1>Body</h1>
+            <Vegbaryani/>
         </div>
     );
 }
