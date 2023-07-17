@@ -1,7 +1,27 @@
+import { CardList } from "./config";
+
+const HomeCard=({img,location,rating})=>{
+    return(
+        <div id="Card">
+            <div id="card-img">
+                <img src={img}/>
+            </div>
+            <div id="card-info">
+                <span>{location}</span>
+                <span>⭐{rating}</span>
+                <button id="d-btn">Details</button>
+            </div>
+        </div>
+    );
+};
 const Body=()=>{
     return(
         <div id="main">
-            <h1>Body</h1>
+            {
+                CardList.map((home)=>{
+                    return<HomeCard {...home} key={home.key}/>
+                })
+            }
         </div>
     );
 }

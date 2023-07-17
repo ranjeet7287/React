@@ -47,4 +47,26 @@ body{
 }
 #main{
     padding-top: 7rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgb(255, 255, 255);
+}
+#Card{
+   width: 20rem;
+   border: 2px solid black;
+   margin: 2rem;
+   padding: 2rem;
+}
+#card-img >img{
+    width: 15em;
+}
+#card-info{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    font-size: larger;
+}
+#d-btn{
+    padding: 0.5rem 1rem;
 }
