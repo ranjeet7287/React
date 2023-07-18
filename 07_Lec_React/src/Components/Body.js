@@ -1,59 +1,62 @@
 import { useEffect, useState } from "react";
 import { RestrauntList } from "../config";
-import { image } from "../config";
 import RestrauntCard from "./ResturantCard"
-import {useState} from "react"
-// import 
-
-// What is Sate?
-// What is Hook?
-// What is use State?
-
+import Shimmer from "./Shimmer";
 function filterData(SearchText,restaurants){
-    return restaurants.filter((restaurant)=>restaurant.name.includes(SearchText));
+    return restaurants.filter((restaurant)=>restaurant.data.name.includes(SearchText));
 }
-
-
 const Body=()=>{
-    // let searchTxt="Birger King";
+    const [allResturant, setAllResturant]=useState([])
+    const [filteredRestaurants,setfilteredRestaurants]=useState([]);
+    const [SearchText,setSearchtext] =useState(""); 
 
-    // SearchText is local state variable
-    const [SearchText,setSearchtext] =useState(""); // to create state variable
-    // const [SearchClicked,setSearchCliked]=useState("false");
+    // useEffect(()=>{
+    //     console.log("call this when dependency is changed")
+    // },[restaurants])
+    useEffect(()=>{
+        // API Call
+        getResturant();
+    },[])
 
-    const [restaurants,setRestaurants]=useState(RestrauntList);
-    return(
-        <> 
-    
-            
+    async function getResturant(){
+        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7901474&lng=80.8892905&page_type=DESKTOP_WEB_LISTING")
+        const json=await data.json();
+        console.log(json);
+        // Optinal Chaning
+        setAllResturant(json?.data?.cards[2]?.data?.data?.cards)
+        setfilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
+    }
+
+    // Conditional Rendering
+    // if the resturant is empty => shimmer effect
+    // if the resturant has data => actual data UI
+
+    // not render component (Early Return)
+    if(!allResturant) return null;
+
+    // if(filteredRestaurants.length==0) return <h1>Not Resturants Found</h1>
+
+    return (allResturant.length == 0) ? <Shimmer/> : (
+        <>
             <div id="search-bar">
                 <input id="food-search"
                 type="text"
                 placeholder="Enter Your Food"
                 value={SearchText}
                 onChange={(e)=>{
-                    // e.target.value -> whatever wrting in input
                     setSearchtext(e.target.value)
                 }}
                 />
-                <button id="search-btn" onClick={()=>{
-                    // if(SearchClicked==="true"){
-                    //     setSearchCliked("false");
-                    // }else{
-                    //     setSearchCliked("true");
-                    // }
-
-                    // need to filter the data
-                    const data=filterData(SearchText,restaurants);
-                    // update the state - resturants
-                    setRestaurants(data);
+                <button id="search-btn" onClick={()=>{ 
+                    const data=filterData(SearchText,allResturant);
+                    setfilteredRestaurants(data);
                 }}>Search</button>
-                {/* <span>{SearchClicked}</span> */}
             </div>
             <div className="resturants-cards">
+                {/* You have to write logic for No Resturant found here */}
                 {
-                    restaurants.map((restaurant)=>{
-                        return <RestrauntCard {...restaurant} key={restaurant.key}/>
+                    filteredRestaurants.map((restaurant,index)=>{
+                        return (<RestrauntCard {...restaurant.data} key={index}/>);
                     })
                 }
             </div>

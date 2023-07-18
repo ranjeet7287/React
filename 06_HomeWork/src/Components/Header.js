@@ -1,5 +1,15 @@
 import logo from "../assest/logo.png"
+import { useState } from "react";
+import { CardList } from "./config";
+
+function filterData(searchText,Homecard){
+    const constdata =Homecard.filter((card)=>{card.location.includes(searchText);})
+    console.log(constdata);
+}
+
 const LogoLocation=()=>{
+    const [searchText,setSearchtext]=useState("");
+    const [Homecard,setHomecard] =useState(CardList);
     return(
         <div id="logo-location">
             <div>
@@ -10,8 +20,18 @@ const LogoLocation=()=>{
                 id="search-location" 
                 type="text"
                 placeholder="Enter Your Location"
+                value={searchText}
+                onChange={(e)=>{
+                    setSearchtext(e.target.value)
+                }}
+
                 />
-                <button id="Search-btn">Search</button>
+                <button id="Search-btn"
+                onClick={()=>{
+                    const data=filterData(searchText,Homecard);
+                    setHomecard(data);
+                }}
+                >Search</button>
             </div>
         </div>
     );

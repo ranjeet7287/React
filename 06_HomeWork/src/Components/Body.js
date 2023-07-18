@@ -1,4 +1,5 @@
 import { CardList } from "./config";
+import { useState } from "react";
 
 const HomeCard=({img,location,rating})=>{
     return(
@@ -15,6 +16,7 @@ const HomeCard=({img,location,rating})=>{
     );
 };
 const Body=()=>{
+    
     return(
         <div id="main">
             {
