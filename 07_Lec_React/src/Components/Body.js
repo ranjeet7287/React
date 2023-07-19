@@ -3,7 +3,7 @@ import { RestrauntList } from "../config";
 import RestrauntCard from "./ResturantCard"
 import Shimmer from "./Shimmer";
 function filterData(SearchText,restaurants){
-    return restaurants.filter((restaurant)=>restaurant.data.name.includes(SearchText));
+    return restaurants.filter((restaurant)=>restaurant?.data?.name?.toLowerCase()?.includes(SearchText.toLowerCase()));
 }
 const Body=()=>{
     const [allResturant, setAllResturant]=useState([])

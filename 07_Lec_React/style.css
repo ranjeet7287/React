@@ -24,6 +24,18 @@ body{
     width: 5rem;
     border-radius: 50px;
 }
+.nav-items{
+    display: flex;
+    gap: 3rem;
+}
+#login-btn{
+    padding: 0.5rem 1.5rem;
+    background-color: #000000;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
 .nav-items > ul{
     display: flex;
     gap: 3rem;
@@ -51,6 +63,7 @@ body{
 .food-name{
     margin: 1rem 0rem;
 }
+
 .rateing{
     font-size: 1.3rem;
 }
