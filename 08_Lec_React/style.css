@@ -21,7 +21,7 @@ body{
     height: 13vh;
 }
 #logo{
-    width: 5rem;
+    width: 4rem;
     border-radius: 50px;
 }
 .nav-items{
@@ -40,12 +40,19 @@ body{
     display: flex;
     gap: 3rem;
     font-size: 1.5rem;
+    text-decoration: none;
     list-style-type: none;
 }
 .nav-items > ul > li{
     cursor: pointer;
     font-weight: 500;
     font-family: 'Gill Sans';
+}
+.list-h{
+    text-decoration: none;
+}
+#sperate{
+    padding-top: 5rem;
 }
 .card{
     padding: 2rem;
@@ -55,6 +62,13 @@ body{
 }
 .card:hover{
     background-color: bisque;
+}
+.card-shimmer{
+    width: 15rem;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgb(208, 202, 202);
+    height: 15rem;
 }
 
 .foodimg{
@@ -86,4 +100,8 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+.resturants-cards-shimmer{
+    display: flex;
+    flex-wrap: wrap;
 }

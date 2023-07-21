@@ -1,14 +1,21 @@
 import { useState } from "react";
-
+import logo from "../assets/logo3.png"
+import { Link } from "react-router-dom";
 const loggedInUser=()=>{
     // API call to check authentication
     return true;
 }
 
+// SPA -> Single Page Application
+// Client side routing
+// server side routing
+
+
+
 const Title= ()=>(
-    <a href="#">
-        <img id="logo" alt="logoImg" src="https://webdesigndev.com/wp-content/uploads/2021/10/1.image_.jpg"/>
-    </a>
+    <Link to="/">
+        <img id="logo" alt="logoImg" src={logo}/>
+    </Link>
 );
 const HeaderComponents=()=>{
 
@@ -19,10 +26,18 @@ const HeaderComponents=()=>{
             <Title/>
             <div className="nav-items">
                 <ul>
-                    <li>Restraunt</li>
-                    <li>Menu</li>
-                    <li>About</li>
-                    <li>👜Cart</li>
+                    <Link to="/resturant">
+                        <li className="list-h">Restraunt</li>
+                    </Link>
+                    <Link to="/contact">
+                        <li>Contact</li>
+                    </Link>
+                    <Link to="/about">
+                        <li>About</li>
+                    </Link>
+                    <Link to="/cart">
+                        <li>👜Cart</li>
+                    </Link>
                 </ul>
                 {
                  isLoggedIn ? <button id="login-btn" onClick={()=>setLoggedIn(false)}>LogOut</button>

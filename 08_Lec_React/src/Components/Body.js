@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RestrauntList } from "../config";
 import RestrauntCard from "./ResturantCard"
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 function filterData(SearchText,restaurants){
     return restaurants.filter((restaurant)=>restaurant?.data?.name?.toLowerCase()?.includes(SearchText.toLowerCase()));
 }
@@ -39,8 +40,12 @@ const Body=()=>{
             </div>
             <div className="resturants-cards">
                 {
-                    filteredRestaurants.map((restaurant,index)=>{
-                        return (<RestrauntCard {...restaurant.data} key={index}/>);
+                    filteredRestaurants.map((restaurant)=>{
+                        return(
+                        <Link to={"/resturant/"+restaurant.data.id} key={restaurant.data.id}>
+                            <RestrauntCard {...restaurant.data} />
+                        </Link>
+                        );
                     })
                 }
             </div>
