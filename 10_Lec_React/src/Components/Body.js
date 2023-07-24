@@ -3,9 +3,8 @@ import { RestrauntList } from "../config";
 import RestrauntCard from "./ResturantCard"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-function filterData(SearchText,restaurants){
-    return restaurants.filter((restaurant)=>restaurant?.data?.name?.toLowerCase()?.includes(SearchText.toLowerCase()));
-}
+import { filterData } from "../utils/Helper";
+import useOnline from "../utils/useOnline";
 const Body=()=>{
     const [allResturant, setAllResturant]=useState([])
     const [filteredRestaurants,setfilteredRestaurants]=useState([]);
@@ -21,6 +20,13 @@ const Body=()=>{
         setAllResturant(json?.data?.cards[2]?.data?.data?.cards)
         setfilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
     }
+
+    const isOnline=useOnline();
+    if(!isOnline){
+        return <h1 id="sperate"> Offline , check your internet connection !! ☠️😵 </h1>;
+    }
+
+
     if(!allResturant) return null;
     return (allResturant.length == 0) ? <Shimmer/> : (
         <>
