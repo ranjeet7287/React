@@ -30,8 +30,9 @@ const Body=()=>{
     if(!allResturant) return null;
     return (allResturant.length == 0) ? <Shimmer/> : (
         <>
-            <div id="search-bar">
+            <div id="search-bar" className="pt-24  ml-8 ">
                 <input id="food-search"
+                className=" border-2 border-black py-2 px-2"
                 type="text"
                 placeholder="Enter Your Food"
                 value={SearchText}
@@ -39,12 +40,12 @@ const Body=()=>{
                     setSearchtext(e.target.value)
                 }}
                 />
-                <button id="search-btn" onClick={()=>{ 
+                <button id="search-btn" className="border-2   border-slate-700 ml-1 py-2 px-2" onClick={()=>{ 
                     const data=filterData(SearchText,allResturant);
                     setfilteredRestaurants(data);
                 }}>Search</button>
             </div>
-            <div className="resturants-cards">
+            <div className="flex flex-wrap justify-center">
                 {
                     filteredRestaurants.map((restaurant)=>{
                         return(

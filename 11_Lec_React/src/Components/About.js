@@ -18,7 +18,7 @@ class About extends Component{
     render(){
         
         return(
-        <div id="sperate">
+        <div id="sperate" className="pt-28">
             <h1>About Us Page </h1>
             <p>
                 Jia Mata Di ❤️❤️
