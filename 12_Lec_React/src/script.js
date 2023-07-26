@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import  ReactDOM  from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -17,9 +17,16 @@ const InstaMart=lazy(()=>import("./Components/InstaMart"));
 // Upon On Demand Loading -> Upon Render -> Suspend Loading 
 
 const AppLayout=()=>{
+
+    const[userData,setuserData]=useState({
+        userName:"Ranjeet Singh",
+        emailId:"sranjeet434@gmail.com"
+    });
+
+
     return(
         <>
-        <Header/>
+        <Header userData={userData}/>
         <Outlet/>
         <Fotter/>
         </>

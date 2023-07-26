@@ -18,7 +18,7 @@ const Title= ()=>(
         <img id="logo" className="w-16 rounded-xl" alt="logoImg" src={logo}/>
     </Link>
 );
-const HeaderComponents=()=>{
+const HeaderComponents=({userData})=>{
 
     const[isLoggedIn,setLoggedIn]=useState(false);
 
@@ -45,7 +45,7 @@ const HeaderComponents=()=>{
                         <li>👜Cart</li>
                     </Link>
                 </ul>
-                <h3>{isOnline ? "🟢":"☠️" }</h3>
+                <h3>{isOnline ? userData.userName :"☠️" }</h3>
                 {
                  isLoggedIn ? <button id="login-btn" className="max-lg:hidden" onClick={()=>setLoggedIn(false)}>LogOut</button>
                  :
