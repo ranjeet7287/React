@@ -17,8 +17,11 @@ const Body=()=>{
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7901474&lng=80.8892905&page_type=DESKTOP_WEB_LISTING")
         const json=await data.json();
         console.log(json);
-        setAllResturant(json?.data?.cards[2]?.data?.data?.cards)
-        setfilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
+        setAllResturant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+
+        // setAllResturant(json?.data?.cards[2]?.data?.data?.cards)
+        // setfilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
     }
 
     const isOnline=useOnline();
@@ -49,8 +52,8 @@ const Body=()=>{
                 {
                     filteredRestaurants.map((restaurant)=>{
                         return(
-                        <Link to={"/resturant/"+restaurant.data.id} key={restaurant.data.id}>
-                            <RestrauntCard {...restaurant.data}  />
+                        <Link to={"/resturant/"+restaurant.info.id} key={restaurant.info.id}>
+                            <RestrauntCard {...restaurant.info}  />
                         </Link>
                         );
                     })

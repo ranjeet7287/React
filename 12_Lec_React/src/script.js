@@ -12,24 +12,29 @@ import Profile from "./Components/profile";
 import { lazy } from "react";
 import { Suspense } from "react"; 
 import Shimmer from "./Components/Shimmer.js";
+import UserContext from "./utils/UserContext";
 
 const InstaMart=lazy(()=>import("./Components/InstaMart"));
 // Upon On Demand Loading -> Upon Render -> Suspend Loading 
 
 const AppLayout=()=>{
 
-    const[userData,setuserData]=useState({
-        userName:"Ranjeet Singh",
-        emailId:"sranjeet434@gmail.com"
+    const[user,setuser]=useState({
+        name:"Ranjeet Singh",
+        email:"sranjeet434@gmail.com"
     });
 
 
     return(
-        <>
-        <Header userData={userData}/>
-        <Outlet/>
-        <Fotter/>
-        </>
+        // Overide the deafult value
+        <UserContext.Provider 
+        value={
+            {user:user}
+        }>
+            <Header/>
+            <Outlet/>
+            <Fotter/>
+        </UserContext.Provider>
     );
 };
 
