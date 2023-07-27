@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext } from "react";
 import { RestrauntList } from "../config";
 import RestrauntCard from "./ResturantCard"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/Helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 const Body=()=>{
     const [allResturant, setAllResturant]=useState([])
     const [filteredRestaurants,setfilteredRestaurants]=useState([]);
     const [SearchText,setSearchtext] =useState(""); 
+    const {user,setuser}=useContext(UserContext);
     useEffect(()=>{
         getResturant();
     },[])
@@ -47,6 +49,12 @@ const Body=()=>{
                     const data=filterData(SearchText,allResturant);
                     setfilteredRestaurants(data);
                 }}>Search</button>
+                <input className="border-2 py-2 ml-2 border-black pl-2" value={user.name} onChange={(e)=>{
+                    setuser(
+                        {name:e.target.value,
+                        email:"newemail@gmail.com"}
+                    )
+                }}></input>
             </div>
             <div className="flex flex-wrap justify-center">
                 {

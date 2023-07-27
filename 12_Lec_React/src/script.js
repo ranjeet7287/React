@@ -29,7 +29,10 @@ const AppLayout=()=>{
         // Overide the deafult value
         <UserContext.Provider 
         value={
-            {user:user}
+            {
+                user:user,
+                setuser:setuser
+            }
         }>
             <Header/>
             <Outlet/>
