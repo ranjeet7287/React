@@ -51,8 +51,14 @@ const Body=()=>{
                 }}>Search</button>
                 <input className="border-2 py-2 ml-2 border-black pl-2" value={user.name} onChange={(e)=>{
                     setuser(
-                        {name:e.target.value,
-                        email:"newemail@gmail.com"}
+                        {...user,
+                        name:e.target.value}
+                    )
+                }}></input>
+                 <input className="border-2 py-2 ml-2 border-black pl-2" value={user.email} onChange={(e)=>{
+                    setuser(
+                        {...user,
+                        email:e.target.value}
                     )
                 }}></input>
             </div>
