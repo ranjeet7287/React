@@ -3,6 +3,8 @@ import logo from "../assets/logo3.png"
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+// import { UseSelector } from "react-redux/es/hooks/useSelector";
 const loggedInUser=()=>{
     // API call to check authentication
     return true;
@@ -27,6 +29,9 @@ const HeaderComponents=({userData})=>{
 
     const {user}=useContext(UserContext);
 
+    const cartItem=useSelector(store => store.cart.items)
+    // console.log(cartItem);
+
 
     return(
         <div className="flex justify-between p-4 items-center fixed w-full h-20 z-40 bg-amber-600">
@@ -46,7 +51,7 @@ const HeaderComponents=({userData})=>{
                         <li>InstaMart</li>
                     </Link>
                     <Link to="/cart">
-                        <li>👜Cart</li>
+                        <li>{cartItem.length}_Cart</li>
                     </Link>
                 </ul>
                 {/* <h3>{isOnline ? userData.userName :"☠️" }</h3> */}

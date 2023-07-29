@@ -13,6 +13,9 @@ import { lazy } from "react";
 import { Suspense } from "react"; 
 import Shimmer from "./Components/Shimmer.js";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./Components/Cart";
 
 const InstaMart=lazy(()=>import("./Components/InstaMart"));
 // Upon On Demand Loading -> Upon Render -> Suspend Loading 
@@ -26,18 +29,20 @@ const AppLayout=()=>{
 
 
     return(
-        // Overide the deafult value
-        <UserContext.Provider 
-        value={
-            {
-                user:user,
-                setuser:setuser
-            }
-        }>
-            <Header/>
-            <Outlet/>
-            <Fotter/>
-        </UserContext.Provider>
+        <Provider store={store}>
+            <UserContext.Provider 
+                value={
+                    {
+                        user:user,
+                        setuser:setuser
+                    }
+                }>
+                    <Header/>
+                    <Outlet/>
+                    <Fotter/>
+            </UserContext.Provider>
+        </Provider>
+
     );
 };
 
@@ -78,6 +83,10 @@ const AppRouter=createBrowserRouter([
                     <InstaMart/>
                 </Suspense>
                 )
+            },
+            {
+                path:"/cart",
+                element:<Cart/>
             }
         ]
         
