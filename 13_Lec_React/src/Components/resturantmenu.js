@@ -13,7 +13,7 @@ const ResturantMenu=()=>{
     const dispatch=useDispatch();
 
     // const handleAddItem =()=>{
-    //     // dispatch - > action pass the payload
+        // dispatch - > action pass the payload
     //     dispatch(addItem("Grapes"));
     // }
 

@@ -6,12 +6,12 @@ const cartSlice=createSlice({
     },
     reducers:{
         // this reducer mapping of addIteam(action)  
-        // this fuction doesn't modefiye anythings it takes and directly modefiy it
+        // this fuction doesn't return anythings it takes and directly modefiy it state
         addItem:(state,action)=>{
             state.items.push(action.payload);
         },
         removeitem:(state,action)=>{
-            state.items.pop();
+            state.items.splice(action,1);
         }
         ,
         clearCart:(state,action)=>{
