@@ -18,7 +18,7 @@ const loggedInUser=()=>{
 
 const Title= ()=>(
     <Link to="/">
-        <img id="logo" className="w-16 rounded-xl" alt="logoImg" src={logo}/>
+        <img data-testid="logo" className="w-16 rounded-xl" alt="logoImg" src={logo}/>
     </Link>
 );
 const HeaderComponents=({userData})=>{
@@ -51,10 +51,10 @@ const HeaderComponents=({userData})=>{
                         <li>InstaMart</li>
                     </Link>
                     <Link to="/cart">
-                        <li>{cartItem.length}_Cart</li>
+                        <li data-testid="cart-item">{cartItem.length}_Cart</li>
                     </Link>
                 </ul>
-                {/* <h3>{isOnline ? userData.userName :"☠️" }</h3> */}
+                <h3 data-testid="online-status">{isOnline ? "🟢" :"☠️" }</h3>
                 <h3>{user.name}</h3>
                 {
                  isLoggedIn ? <button id="login-btn" className="max-lg:hidden" onClick={()=>setLoggedIn(false)}>LogOut</button>

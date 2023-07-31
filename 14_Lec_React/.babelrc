@@ -1,0 +1,7 @@
+{
+    "presets": [
+        ["@babel/preset-env", {"targets": {"node": "current"}}], // for the configuretion to read ES6
+        ["@babel/preset-react",{"runtime":"automatic"}] // for the configuration of jsx
+        
+    ]
+}
