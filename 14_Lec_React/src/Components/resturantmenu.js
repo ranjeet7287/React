@@ -38,8 +38,8 @@ const ResturantMenu=()=>{
                     }}>Add Item</button>
             </div> */}
             <div>
-                <ul>
                 <h1 className="text-5xl font-semibold">Menu</h1>
+                <ul data-testid="menu">
                 {
                 Object.values(restaurantMenu.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards).map(
                     (item) => (
@@ -47,7 +47,9 @@ const ResturantMenu=()=>{
                         <li className="text-xl" key={item.card?.info?.id}>
                             {item.card?.info?.name} 
                         </li>
-                        <button className="border-2 border-black px-2 bg-slate-300 m-2"
+                        <button 
+                        data-testid="addbtn"
+                        className="border-2 border-black px-2 bg-slate-300 m-2"
                         onClick={()=>{addFoodItem(item)}}
                         >AddItem</button>
                     </>
